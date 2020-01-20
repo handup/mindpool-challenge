@@ -1,0 +1,8 @@
+@import './config/colors.css';
+@import './config/fonts.css';
+@import './config/mediaqueries.css';
+@import './config/spacings.css';
+@import './config/transitions.css';
+@import './config/grid.css';
+@import './config/layout.css';
+@import './config/z-index.css';

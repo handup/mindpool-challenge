@@ -1,0 +1,209 @@
+@import '_config.css';
+
+:root {
+    --transition: var(--_transition);
+    --height: 100vh;
+    --grid-width: 1320px;
+}
+
+.grid {
+    @mixin float-container;
+
+    display: block;
+    width: 100%;
+    max-width: calc(var(--grid-width) + (16px * 2));
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.hero {
+    position: relative;
+    left: 50%;
+    width: 100vw;
+    min-height: var(--height);
+    overflow: hidden;
+    transform: translateX(-50%);
+
+    @media (--mdMedia) {
+        left: auto;
+        width: 100%;
+        margin-top: -80px;
+        transform: none;
+    }
+}
+
+.heroHexagon {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: calc((100% / 3) * 2);
+    transform: translateY(-60%) rotateZ(-12deg) translateX(-50%);
+    background-color: #f8f8f9;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+
+    @media (--mdMedia) {
+        top: 50%;
+        transform: translateY(-60%) rotateZ(-12deg);
+    }
+}
+
+.heroHexagon::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.heroImageContainer {
+    position: relative;
+    z-index: 5;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+
+    @media (--mdMedia) {
+        position: absolute;
+        top: 50%;
+        width: 50%;
+        transform: translateY(-50%);
+        background-color: #ebebeb;
+        box-shadow: 30px 40px 40px -10px rgba(0, 0, 0, 0.16);
+    }
+}
+
+.heroImageContainer::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: 65%;
+}
+
+.heroDotsContainer {
+    position: absolute;
+    top: 128px;
+    right: 0;
+    width: 100vw;
+    height: 65vw;
+    transform: translateY(-50%);
+
+    @media (--mdMedia) {
+        top: 50%;
+        width: 50%;
+        height: auto;
+        padding-top: calc(65% / 2);
+    }
+}
+
+.heroDots {
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    right: 0;
+    transform: rotateZ(90deg) translateY(50%) translateX(-50%);
+    transform-origin: right;
+    opacity: 0.05;
+    color: #000;
+    font-size: 440px;
+}
+
+.heroDots svg {
+    width: 0.5em;
+}
+
+.heroImage {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(1) translateZ(0);
+    transform-origin: right center;
+    transition: transform var(--transition), opacity var(--transition);
+    object-fit: cover;
+}
+
+.heroImageContainer:hover .heroImage {
+    transform: scale(1.01) translateZ(0);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    margin-top: 32px;
+
+    @media (--mdMedia) {
+        top: 50vh;
+        margin-top: 0;
+        transform: translateY(-50%);
+    }
+}
+
+.category {
+    display: block;
+    margin-bottom: 46px;
+    color: #9fafa7;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.title {
+    max-width: 500px;
+    margin: 0;
+    margin-bottom: 14px;
+    animation-name: heroTitle;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.2, 0, 0.4, 1);
+    animation-delay: 0.5s;
+    animation-iteration-count: 1;
+    color: #16313f;
+    font-size: 46px;
+    font-weight: 600;
+    line-height: 52px;
+    animation-fill-mode: forwards;
+    white-space: pre-wrap;
+
+    @supports (animation-name: heroTitle) {
+        transform: translateX(-10%);
+        opacity: 0;
+    }
+
+    @media (--mdMedia) {
+        font-size: 66px;
+        line-height: 74px;
+    }
+}
+
+.subtitle {
+    max-width: 500px;
+    margin: 0;
+    animation-name: heroTitle;
+    animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.2, 0, 0.4, 1);
+    animation-delay: 1s;
+    animation-iteration-count: 1;
+    color: #505a5f;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 28px;
+    animation-fill-mode: forwards;
+    white-space: pre-wrap;
+
+    @supports (animation-name: heroHexagon) {
+        transform: translateX(-10%);
+        opacity: 0;
+    }
+}
+
+@keyframes heroTitle {
+    0% {
+        transform: translateX(-10%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

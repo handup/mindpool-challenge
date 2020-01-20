@@ -1,0 +1,16 @@
+/node_modules/
+npm-debug.log
+/dist/
+/dist-server/
+/.docker-sync/
+yarn-error.log
+/log/*.log
+/log/*.json
+.translations
+
+# Deployment
+codeship.aes
+dockercfg
+*.decrypted
+/tmp/
+/deployment/envs/*.env

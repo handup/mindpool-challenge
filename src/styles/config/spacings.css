@@ -1,0 +1,11 @@
+/**
+ * Spacings
+ */
+
+:root {
+    --spacing: 24px;
+    --spacing-xs: calc(var(--spacing) * 0.5);
+    --spacing-s: calc(var(--spacing) * 0.666666);
+    --spacing-l: calc(var(--spacing) * 2);
+    --spacing-xl: calc(var(--spacing) * 4);
+}

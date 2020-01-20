@@ -1,0 +1,63 @@
+@import './grid.css';
+
+:root {
+    --_sm-page-margin: 16px;
+    --_md-page-margin: 24px;
+    --_xl-page-margin: auto;
+}
+
+@define-mixin page-container {
+    max-width: 1280px;
+    margin-right: var(--_sm-page-margin);
+    margin-left: var(--_sm-page-margin);
+
+    @media (--mdMedia) {
+        margin-right: var(--_md-page-margin);
+        margin-left: var(--_md-page-margin);
+    }
+
+    @media (--xlMedia) {
+        margin-right: var(--_xl-page-margin);
+        margin-left: var(--_xl-page-margin);
+    }
+}
+
+@define-mixin remove-page-container-margin {
+    margin-right: calc(-1 * var(--_sm-page-margin));
+    margin-left: calc(-1 * var(--_sm-page-margin));
+
+    @media (--mdMedia) {
+        margin-right: calc(-1 * var(--_md-page-margin));
+        margin-left: calc(-1 * var(--_md-page-margin));
+    }
+
+    @media (--xlMedia) {
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+@define-mixin css-grid {
+    display: grid;
+    grid-column-gap: var(--_gutter);
+    grid-template-columns: repeat(6, 1fr);
+
+    @media (--lgMedia) {
+        grid-template-columns: repeat(12, 1fr);
+    }
+}
+
+@define-mixin css-grid-container {
+    @mixin page-container;
+    @mixin css-grid;
+}
+
+@define-mixin float-container {
+    &::after {
+        content: '.';
+        display: block;
+        visibility: hidden;
+        height: 0;
+        clear: both;
+    }
+}

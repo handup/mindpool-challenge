@@ -1,0 +1,249 @@
+@import '_config.css';
+
+:root {
+    --grid-width: 1320px;
+    --transition: var(--_transition);
+    --logo-width-large: 180px;
+    --header-height: 80px;
+    --header-height-scrolled: 60px;
+}
+
+@custom-media --collapse-breakpoint only screen and (max-width: 1759px); /* (1320px + ((180px + 40px * 2)) - 1 */
+@custom-media --large-breakpoint only screen and (min-width: 1760px); /* 1320px + ((180px + 40px * 2) */
+
+@define-mixin grid {
+    @mixin float-container;
+
+    width: 100%;
+    max-width: calc(var(--grid-width) + (16px * 2));
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.container {
+    margin-bottom: calc(var(--header-height));
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    margin-top: calc(var(--header-height) / 2);
+    transform: translateY(-50%);
+    will-change: margin-top;
+    transition: margin-top var(--transition);
+}
+
+.scrolled .content {
+    margin-top: calc(var(--header-height-scrolled) / 2);
+}
+
+.transparent .header::before {
+    opacity: 0;
+}
+
+.header {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: var(--header-height);
+    transition: height var(--transition);
+    will-change: height;
+}
+
+.scrolled .header {
+    height: var(--header-height-scrolled);
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity var(--transition), box-shadow var(--transition);
+    opacity: 1;
+    background-color: #fff;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0);
+}
+
+.scrolled .header::before {
+    opacity: 1;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.gridSmallOnly {
+    display: flex;
+    align-items: center;
+
+    @media (--collapse-breakpoint) {
+        @mixin grid;
+    }
+}
+
+.gridLargeOnly {
+    display: none;
+    width: 100%;
+
+    @media (--mdMedia) {
+        display: block;
+    }
+
+    @media (--large-breakpoint) {
+        @mixin grid;
+    }
+}
+
+.logo {
+    width: 140px;
+    height: 50px;
+    margin-right: 40px;
+    float: left;
+    color: #16313f;
+
+    @media (--mdMedia) {
+        width: 180px;
+    }
+
+    @media (--large-breakpoint) {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        transform: translateY(-50%);
+    }
+}
+
+.logo svg {
+    width: inherit;
+    height: inherit;
+}
+
+.linkList {
+    @mixin float-container;
+
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style-type: none;
+}
+
+.linkList li {
+    margin-right: 40px;
+    float: left;
+}
+
+.linkList a {
+    display: inline-block;
+    position: relative;
+    transition: color var(--transition);
+    color: #505a5f;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.linkList a:hover {
+    color: #000;
+}
+
+.linkListHoverBar {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--transition);
+    background-color: currentColor;
+}
+
+.linkList a:hover .linkListHoverBar {
+    transform: scaleX(1);
+}
+
+.login {
+    @mixin float-container;
+
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0;
+    float: right;
+    transition: color var(--transition);
+    border: 0;
+    background-color: transparent;
+    color: #505a5f;
+    font-size: 16px;
+    font-weight: normal;
+    cursor: pointer;
+    appearance: none;
+}
+
+.login:hover {
+    color: #000;
+}
+
+.loginIcon {
+    float: left;
+    font-size: 18px;
+}
+
+.loginLabel {
+    margin-left: 8px;
+    float: left;
+    white-space: nowrap;
+}
+
+.bookADemo {
+    display: none;
+    position: relative;
+    margin-left: 40px;
+    padding: 0 12px;
+    border: 1px solid currentColor;
+    border-radius: 6px;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 40px;
+    white-space: nowrap;
+
+    @media (--mdMedia) {
+        display: inline-block;
+    }
+
+    @media (--large-breakpoint) {
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+    }
+}
+
+.bookADemo::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    transition: opacity var(--transition);
+    border-radius: inherit;
+    opacity: 0;
+    background-color: currentColor;
+}
+
+.bookADemo:hover::before {
+    opacity: 1;
+}
+
+.bookADemoLabel {
+    position: relative;
+    z-index: 2;
+    transition: color var(--transition);
+}
+
+.bookADemo:hover .bookADemoLabel {
+    color: #fff !important;
+}

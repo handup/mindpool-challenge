@@ -1,0 +1,20 @@
+@import '_config.css';
+
+:root {
+    --transition: var(--_transition);
+    --grid-width: 1320px;
+}
+
+.container {
+    width: 100%;
+}
+
+.grid {
+    @mixin float-container;
+
+    display: block;
+    width: 100%;
+    max-width: calc(var(--grid-width) + (16px * 2));
+    margin: 0 auto;
+    padding: 0 16px;
+}

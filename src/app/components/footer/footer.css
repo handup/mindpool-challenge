@@ -1,0 +1,236 @@
+@import '_config.css';
+
+:root {
+    --grid-width: 1320px;
+    --transition: var(--_transition);
+    --elevation-shadow-1: 0 1px 1px 0 rgba(0, 0, 0, 0.12), 0 0 1px 0 rgba(0, 0, 0, 0.06);
+    --elevation-shadow-2: 0 2px 2px 0 rgba(0, 0, 0, 0.12), 0 0 2px 0 rgba(0, 0, 0, 0.06);
+    --elevation-shadow-3: 0 3px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.06);
+    --elevation-shadow-4: 0 4px 4px 0 rgba(0, 0, 0, 0.12), 0 0 4px 0 rgba(0, 0, 0, 0.06);
+    --elevation-shadow-6: 0 6px 6px 0 rgba(0, 0, 0, 0.12), 0 0 6px 0 rgba(0, 0, 0, 0.06);
+    --elevation-shadow-8: 0 8px 8px 0 rgba(0, 0, 0, 0.12), 0 0 8px 0 rgba(0, 0, 0, 0.06);
+    --elevation-shadow-12: 0 12px 12px 0 rgba(0, 0, 0, 0.12), 0 0 12px 0 rgba(0, 0, 0, 0.06);
+    --elevation-shadow-16: 0 16px 16px 0 rgba(0, 0, 0, 0.12), 0 0 16px 0 rgba(0, 0, 0, 0.06);
+    --elevation-shadow-24: 0 24px 24px 0 rgba(0, 0, 0, 0.12), 0 0 24px 0 rgba(0, 0, 0, 0.06);
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    padding-top: 78px;
+    padding-bottom: 25px;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: #081820;
+    color: #fff;
+}
+
+.grid {
+    @mixin float-container;
+
+    display: block;
+    width: 100%;
+    max-width: calc(var(--grid-width) + (16px * 2));
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.companyInfo {
+    width: 100%;
+    float: left;
+
+    @media (--mdMedia) {
+        max-width: calc((100% / 12) * 4);
+    }
+}
+
+.logo {
+    margin-bottom: 36px;
+}
+
+.logo svg {
+    width: 180px;
+    height: 50px;
+}
+
+.address {
+    margin: 0;
+    margin-bottom: 24px;
+    opacity: 0.5;
+    color: #fff;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.companyDetails {
+    display: table;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    color: #fff;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.companyDetailLabel {
+    padding-right: 20px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.companyDetails a {
+    text-decoration: underline;
+}
+
+.companyDetail {
+    display: table-row;
+}
+
+.companyDetail * {
+    display: table-cell;
+}
+
+.linkLists {
+    @mixin float-container;
+
+    width: 100%;
+    float: right;
+
+    @media (--mdMedia) {
+        width: calc((100% / 12) * 6);
+    }
+}
+
+.linkListContainer {
+    width: 100%;
+    margin-top: 64px;
+    float: left;
+
+    @media (--mdMedia) {
+        width: calc(100% / 3);
+        margin-top: 0;
+    }
+}
+
+.linkListTitle {
+    margin: 0;
+    margin-bottom: 7px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.linkList {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.linkList a {
+    display: block;
+    transition: opacity var(--transition);
+    opacity: 0.5;
+}
+
+.linkList a:hover {
+    opacity: 1;
+}
+
+.bottom {
+    @mixin float-container;
+
+    width: 100%;
+    margin-top: 64px;
+    padding-top: 25px;
+    float: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+    @media (--mdMedia) {
+        margin-top: 180px;
+    }
+}
+
+.copyright {
+    float: left;
+    opacity: 0.5;
+    color: #fff;
+    font-size: 14px;
+    line-height: 40px;
+}
+
+.bottomInlineLinks {
+    @mixin float-container;
+
+    display: grid;
+    width: 100%;
+    margin-top: 24px;
+    float: right;
+
+    @media (--mdMedia) {
+        width: auto;
+        margin-top: 0;
+        display: block;
+    }
+}
+
+.bottomInlineLink {
+    width: 100%;
+    float: left;
+    transition: opacity var(--transition);
+    opacity: 0.5;
+    color: #fff;
+    font-size: 14px;
+    line-height: 40px;
+
+    @media (--mdMedia) {
+        width: auto;
+    }
+}
+
+.bottomInlineLink + .bottomInlineLink {
+    margin-top: 16px;
+
+    @media (--mdMedia) {
+        margin-top: 0;
+        margin-left: 40px;
+    }
+}
+
+.bottomInlineLink:hover {
+    opacity: 1;
+}
+
+.getInTouch {
+    position: relative;
+    padding: 0 8px;
+    border-radius: 6px;
+    opacity: 1;
+    background-color: #fff;
+    color: #081820;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+
+    @media (--mdMedia) {
+        padding: 0 15px;
+    }
+}
+
+.getInTouch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: opacity var(--transition);
+    border-radius: inherit;
+    opacity: 0;
+    box-shadow: var(--elevation-shadow-1), var(--elevation-shadow-2), var(--elevation-shadow-3), var(--elevation-shadow-4), var(--elevation-shadow-6), var(--elevation-shadow-8);
+    pointer-events: none;
+}
+
+.getInTouch:hover::before {
+    opacity: 1;
+}

@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: /account/
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /become-artist/
+Disallow: /constants/
+Disallow: /contest/
+Disallow: /custom
+Disallow: /custom-tattoo-designs
+Disallow: /handbook/
+Disallow: /hybridauth/
+Disallow: /imagesLinks/
+Disallow: /my/
+Disallow: /payments/
+Disallow: /photos/
+Disallow: /profile/
+Disallow: /profiles/
+Disallow: /site/
+

@@ -1,0 +1,10 @@
+{
+  "ENV": "develop",
+  "LOGGING": "true",
+  "SERVER_PORT": "3000",
+  "SERVER_HOST": "localhost",
+  "CDN_STATIC": "/static/",
+  "CDN_IMG": "/static/images",
+  "ORIGIN": "http://localhost:3000",
+  "SESSION_SECRET": "420"
+}

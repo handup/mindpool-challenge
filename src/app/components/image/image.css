@@ -1,0 +1,9 @@
+@import '_config.css';
+
+:root {
+    --transition: var(--_transition);
+}
+
+.lazy {
+    transition: opacity var(--transition);
+}

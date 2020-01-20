@@ -1,0 +1,6 @@
+/**
+ * Media Queries
+ */
+@custom-media --breakpoint-SmallOnly (max-width: 767px);
+@custom-media --breakpoint-Medium (min-width: 768px);
+@custom-media --breakpoint-Large (min-width: 1136px);

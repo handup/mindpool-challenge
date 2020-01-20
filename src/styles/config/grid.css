@@ -1,0 +1,18 @@
+/**
+ * Grid
+ */
+
+:root {
+    --_column-count: 12;
+    --_gutter: 16px;
+    --_sm-container-max-width: 768px;
+    --_md-container-max-width: 992px;
+    --_lg-container-max-width: 1200px;
+    --_xl-container-max-width: 1328px; /* Weird size is a result of design wanting content to have max width of 1280 so 1280 + 2xGutter */
+    --_snappoints: sm, md, lg, xl;
+}
+
+@custom-media --smMedia only screen;
+@custom-media --mdMedia only screen and (min-width: 768px);
+@custom-media --lgMedia only screen and (min-width: 1024px);
+@custom-media --xlMedia only screen and (min-width: 1328px);

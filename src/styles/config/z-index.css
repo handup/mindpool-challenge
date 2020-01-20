@@ -1,0 +1,11 @@
+/**
+ * Z-indexes
+ **/
+:root {
+    --_z-index--content: 100;
+    --_z-index--categorydropdown: 200;
+    --_z-index--inline-sticky: 250;
+    --_z-index--header: 300;
+    --_z-index--fab: 400;
+    --_z-index--modal: 500;
+}

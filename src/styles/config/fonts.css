@@ -1,0 +1,8 @@
+/**
+ * Fonts
+ */
+
+:root {
+    --_font-family--sans-serif: 'Campton', 'Open Sans', 'Gill Sans MT', 'Gill Sans', Corbel, Arial, sans-serif;
+    --_font-family--serif: 'Playfair Display', 'Times New Roman', Georgia, Cambria, Times, serif;
+}

@@ -1,0 +1,9 @@
+/**
+ * Transitions
+ */
+
+:root {
+    --_transition--duration: .2s;
+    --_transition--easing: cubic-bezier(0.2, 0, 0.4, 1);
+    --_transition: var(--_transition--duration) var(--_transition--easing);
+}

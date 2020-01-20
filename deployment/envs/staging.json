@@ -1,0 +1,9 @@
+{
+    "ENV": "staging",
+    "LOGGING": "true",
+    "SERVER_PORT": "3000",
+    "SERVER_HOST": "https://sta.mindpool.com/",
+    "CDN_STATIC": "/static/",
+    "CDN_IMG": "https://sta-mindpool.imgix.net/images",
+    "ORIGIN": "https://sta.mindpool.com/"
+}

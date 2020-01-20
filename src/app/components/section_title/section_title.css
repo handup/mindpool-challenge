@@ -1,0 +1,58 @@
+@import '_config.css';
+
+.container {
+    margin-bottom: 80px;
+    text-align: center;
+}
+
+.icon {
+    display: block;
+    width: 1em;
+    margin: 0 auto;
+    margin-bottom: 33px;
+    font-size: 22px;
+}
+
+.title {
+    display: block;
+    margin: 0;
+    margin-bottom: 11px;
+    color: #16313f;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 50px;
+    white-space: pre-wrap;
+}
+
+.dark .title {
+    color: #fff;
+}
+
+.description {
+    display: block;
+    max-width: 630px;
+    margin: 0 auto;
+    color: #505a5f;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 28px;
+    white-space: pre-wrap;
+}
+
+.dark .description {
+    opacity: 0.7;
+    color: #fff;
+}
+
+.container.alignLeft {
+    width: 100%;
+    text-align: left;
+
+    .description {
+        margin-left: 0;
+    }
+
+    .icon {
+        margin-left: 0;
+    }
+}

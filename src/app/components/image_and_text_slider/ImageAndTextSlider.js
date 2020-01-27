@@ -7,6 +7,7 @@ import LazyImage from '../image/LazyImage';
 // Styles
 import styles from './image_and_text_slider.css';
 
+
 export default class ImageAndTextSlider extends PureComponent {
     static propTypes = {
         themeColor: PropTypes.string,
@@ -24,19 +25,48 @@ export default class ImageAndTextSlider extends PureComponent {
         slides: []
     };
 
+    constructor(){
+        super();
+        this.nextSlide = this.nextSlide.bind(this);
+        this.previousSlide = this.previousSlide.bind(this);
+        this
+        this.state = {currentIndex: 0};
+    };
+
+    nextSlide() {
+        let slides = this.props.slides;
+        if (this.state.currentIndex < slides.length - 1) {
+            this.setState({ currentIndex: this.state.currentIndex + 1 }, function () {
+        });
+        }
+        else {
+            this.setState({ currentIndex: 0 })
+        }
+    };
+
+    previousSlide() {
+        let slides = this.props.slides;
+        if (this.state.currentIndex > 0) {
+            this.setState({ currentIndex: this.state.currentIndex -1 })
+        }
+        else {
+            this.setState({ currentIndex: slides.length - 1 })
+        }
+    }
+
     render() {
         const {
             slides,
             themeColor
         } = this.props;
 
-        const slide = slides[0];
-
+        let slide = slides[this.state.currentIndex];
         return (
             <section className={classNames(styles.container, styles.anotherContainerClass)}>
                 <div className={styles.runway}>
                     <div className={styles.slide}>
                         <div className={styles.grid}>
+                            <button className={[styles.navBTN, styles.leftBTN].join(' ')} onClick={this.previousSlide}> &larr;</button>
                             <div className={styles.slideBox}>
                                 <div className={styles.slideBoxImageContainer}>
                                     <LazyImage
@@ -52,9 +82,10 @@ export default class ImageAndTextSlider extends PureComponent {
                                         className={styles.readMore}
                                         style={{color: themeColor}}>
                                         Read more
-                                    </Link>
+                                        </Link>
                                 </div>
                             </div>
+                            <button className={[styles.navBTN, styles.rightBTN].join(' ')} onClick={this.nextSlide}> &rarr;</button>
                         </div>
                     </div>
                 </div>

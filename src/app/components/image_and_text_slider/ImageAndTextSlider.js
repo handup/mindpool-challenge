@@ -24,33 +24,39 @@ export default class ImageAndTextSlider extends PureComponent {
         themeColor: '#75bca8',
         slides: []
     };
+        slideWidth(){
+          return document.querySelector('.' + (styles.grid)).clientWidth -32
+        }
 
+    //added constructor to for binding
     constructor(){
         super();
         this.nextSlide = this.nextSlide.bind(this);
         this.previousSlide = this.previousSlide.bind(this);
-        this
-        this.state = {currentIndex: 0};
+        this.state = {currentIndex: 0, translateValue: 0};
     };
 
     nextSlide() {
         let slides = this.props.slides;
         if (this.state.currentIndex < slides.length - 1) {
-            this.setState({ currentIndex: this.state.currentIndex + 1 }, function () {
-        });
+            this.setState({ currentIndex: this.state.currentIndex + 1,
+                //trigger animation
+                translateValue: this.state.translateValue - this.slideWidth()});
         }
         else {
-            this.setState({ currentIndex: 0 })
+            this.setState({ currentIndex: slides.length - 1})
         }
     };
 
     previousSlide() {
         let slides = this.props.slides;
         if (this.state.currentIndex > 0) {
-            this.setState({ currentIndex: this.state.currentIndex -1 })
+            this.setState({ currentIndex: this.state.currentIndex -1,
+                //trigger animation
+                translateValue: this.state.translateValue  +(this.slideWidth())})
         }
         else {
-            this.setState({ currentIndex: slides.length - 1 })
+            this.setState({ currentIndex: 0})
         }
     }
 
@@ -60,30 +66,39 @@ export default class ImageAndTextSlider extends PureComponent {
             themeColor
         } = this.props;
 
-        let slide = slides[this.state.currentIndex];
         return (
             <section className={classNames(styles.container, styles.anotherContainerClass)}>
                 <div className={styles.runway}>
                     <div className={styles.slide}>
                         <div className={styles.grid}>
+
                             <button className={[styles.navBTN, styles.leftBTN].join(' ')} onClick={this.previousSlide}> &larr;</button>
-                            <div className={styles.slideBox}>
-                                <div className={styles.slideBoxImageContainer}>
-                                    <LazyImage
-                                        className={styles.slideBoxImage}
-                                        src={slide.imageUrl} />
-                                </div>
-                                <div className={styles.slideBoxContent}>
-                                    <span style={{color: themeColor}} className={styles.slideCategory}>{slide.category}</span>
-                                    <h3 className={styles.slideTitle}>{slide.title}</h3>
-                                    <p className={styles.slideDescription}>{slide.description}</p>
-                                    <Link
-                                        to={slide.url}
-                                        className={styles.readMore}
-                                        style={{color: themeColor}}>
-                                        Read more
+                            <div className="slider"
+                                //sliding animation
+                                style={{
+                                        transform: `translateX(${this.state.translateValue}px)`,
+                                        transition: 'transform ease-out 1s'
+                                    }}>
+                            {slides.map((slide, i) => (
+                                <div className={styles.slideBox} key={i}>
+                                    <div className={styles.slideBoxImageContainer}>
+                                        <LazyImage
+                                            className={styles.slideBoxImage}
+                                            src={slide.imageUrl} />
+                                    </div>
+                                    <div className={styles.slideBoxContent}>
+                                        <span style={{color: themeColor}} className={styles.slideCategory}>{slide.category}</span>
+                                        <h3 className={styles.slideTitle}>{slide.title}</h3>
+                                        <p className={styles.slideDescription}>{slide.description}</p>
+                                        <Link
+                                            to={slide.url}
+                                            className={styles.readMore}
+                                            style={{color: themeColor}}>
+                                            Read more
                                         </Link>
+                                    </div>
                                 </div>
+                            ))}
                             </div>
                             <button className={[styles.navBTN, styles.rightBTN].join(' ')} onClick={this.nextSlide}> &rarr;</button>
                         </div>
